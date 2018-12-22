@@ -1,0 +1,26 @@
+{
+  "name": "dms",
+  "version": "1.0.0",
+  "description": "Document Manage System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Therfaint/DMS.git"
+  },
+  "keywords": [
+    "React",
+    "Koa",
+    "MongoDB",
+    "Document",
+    "Manage"
+  ],
+  "author": "Therfaint-",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Therfaint/DMS/issues"
+  },
+  "homepage": "https://github.com/Therfaint/DMS#readme"
+}
