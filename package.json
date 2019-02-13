@@ -4,7 +4,11 @@
   "description": "Document Manage System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "cross-env NODE_ENV=development PORT=8080 nodemon --ignore src/client --inspect bin/server.js",
+    "devServer": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
+    "predev": "pm2 stop all && pm2 start bin/server.js --watch",
+    "dev": "yarn run server && yarn run devServer",
+    "prod": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js && 打包服务端代码"
   },
   "repository": {
     "type": "git",
@@ -14,13 +18,56 @@
     "React",
     "Koa",
     "MongoDB",
-    "Document",
-    "Manage"
+    "Document Manage"
   ],
   "author": "Therfaint-",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Therfaint/DMS/issues"
   },
-  "homepage": "https://github.com/Therfaint/DMS#readme"
+  "homepage": "https://github.com/Therfaint/DMS#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@babel/runtime": "^7.2.0",
+    "antd": "^3.11.2",
+    "cross-fetch": "^3.0.0",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.6",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^7.4.0",
+    "log4js": "^3.0.6",
+    "mine": "^0.1.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-async-to-generator": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import": "^1.11.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.0.2",
+    "ejs": "^2.6.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "koa-static": "^5.0.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "nodemon": "^1.18.9",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.11",
+    "webpack-merge": "^4.1.5"
+  }
 }

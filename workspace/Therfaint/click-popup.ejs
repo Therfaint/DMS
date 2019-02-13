@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>点选文字</title>
+    <style>
+        body {
+            margin: 60px 0;
+            text-align: center;
+            font-family: Microsoft YaHei,Hiragino Sans GB,Segoe UI,HelveticaNeue-Light,sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h3 a {
+            text-decoration: none;
+        }
+
+        input[type=text], input[type=password] {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            padding: 0 10px;
+            width: 278px;
+            height: 36px;
+            font-size: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            width: 302px;
+            height: 44px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+
+        }
+
+
+        #captcha {
+            width: 300px;
+            display: inline-block;
+        }
+
+        label {
+            vertical-align: top;             display: inline-block;             width: 80px;             text-align: right;line-height: 38px
+        }
+
+        #wait {
+            text-align: left;
+            color: #666;
+            margin: 0;
+        }
+        #form div{
+            margin-bottom: 9px;
+        }
+    </style>
+    <script src="./lib/jquery.js"></script>
+    <script type="text/javascript">
+        (function() {
+            _fmOpt = {
+                display: 'popup',
+                width: '300px',
+                container: '#captcha',
+                initialTime: new Date().getTime(),
+                partner: 'xin3',
+                appName: 'xin3_web',
+                token: 'xin3' + "-" + new Date().getTime() + "-"+ Math.random().toString(16).substr(2),
+                fmb: true,
+                env: 1,
+                getinfo: function(){
+                    return "e3Y6ICIyLjUuMCIsIG9zOiAid2ViIiwgczogMTk5LCBlOiAianMgbm90IGRvd25sb2FkIn0=";
+                }
+            };
+
+            var cimg = new Image(1,1);
+            cimg.onload = function() {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "https://fp.tongdun.net/fp/clear.png?partnerCode=tongdun&appName=api_test_web&tokenId=" + _fmOpt.token;
+
+            var fm = document.createElement('script'); fm.type = 'text/javascript';
+            fm.src = '../main/tdc.js?ver=0.1&t=' + (new Date().getTime()/3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<h3><a href="./demo.html">返&nbsp;回&nbsp;列&nbsp;表</a></h3>
+<h1>点选文字(两个验证)</h1>
+<form id="form">
+    <div>
+        <label for="fullname">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+        <input class="td-reg-field" id="fullname" type="text" value="" placeholder="请填写身份证中的姓名">
+    </div>
+    <div>
+        <label for="phone">手&nbsp;机&nbsp;号：</label>
+        <input class="td-reg-field" id="phone" type="text" value="" placeholder="可作为登录名">
+    </div>
+    <div>
+        <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+        <input class="td-reg-pwd" id="password" type="password" value="" placeholder="6-16个字符，区分大小写">
+    </div>
+    <div>
+        <label for="password">确认密码：</label>
+        <input class="  td-reg-pwd" id="re_password" type="password" value="" placeholder="请再次填写密码">
+    </div>
+    <div>
+        <label>完成验证：</label>
+        <div id="captcha">
+            <p id="wait" class="show" style="display: none;">正在加载验证码......</p>
+        </div>
+    </div>
+    <div>
+        <input type="checkbox" id="c"><label for="c" style="width: 200px;font-size: 14px;text-align: left;margin-left: 9px">同意《用户注册应知事项》</label>
+    </div>
+    <div>         <label for="password"></label>         <div id="btn" class="btn" style="background-color: #005aff;color: white">注册</div>     </div>
+</form>
+<script type="text/javascript">
+    $('#btn').click(function () {
+        window._fmOpt.triggerCaptcha();
+    })
+</script>
+</body></html>
